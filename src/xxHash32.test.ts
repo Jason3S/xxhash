@@ -40,5 +40,6 @@ function getSamples() {
         { s: 'abcde',               e: '9738f19b'},
         { s: 'ab'.repeat(10),       e: '244fbf7c'},
         { s: 'abc'.repeat(100),     e: '55cad6be'},
+        { s: 'My text to hash 😊',  e: 'af7fd356'},
     ];
 }

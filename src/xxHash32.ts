@@ -12,6 +12,8 @@ const PRIME32_5 =  374761393;
  * @param seed - optional seed (32-bit unsigned);
  */
 export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
+    const b = buffer;
+
     /*
         Step 1. Initialize internal accumulators
         Each accumulator gets an initial value based on optional seed input. Since the seed is optional, it can be 0.
@@ -41,7 +43,7 @@ export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
     let acc = (seed + PRIME32_5) & 0xffffffff;
     let offset = 0;
 
-    if (buffer.length >= 16) {
+    if (b.length >= 16) {
         /*
             Step 2. Process stripes
             A stripe is a contiguous segment of 16 bytes. It is evenly divided into 4 lanes, of 4 bytes each.
@@ -65,11 +67,11 @@ export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
             happens, move to step 3.
         */
 
-        const limit = buffer.length - 16;
+        const b = buffer;
+        const limit = b.length - 16;
         let lane = 0;
         for (offset = 0; (offset & 0xfffffff0) <= limit; offset += 4 ) {
             const i = offset;
-            const b = buffer;
             const laneN0 = b[i + 0] + (b[i + 1] << 8);
             const laneN1 = b[i + 2] + (b[i + 3] << 8);
             const laneNP = laneN0 * PRIME32_2 + (laneN1 * PRIME32_2 << 16);
@@ -124,7 +126,6 @@ export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
 
     let limit = buffer.length - 4;
     for (; offset <= limit; offset += 4) {
-        const b = buffer;
         const i = offset;
         const laneN0 = b[i + 0] + (b[i + 1] << 8);
         const laneN1 = b[i + 2] + (b[i + 3] << 8);
@@ -145,8 +146,8 @@ export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
         ```
     */
 
-    for (; offset < buffer.length; ++offset) {
-        const lane = buffer[offset];
+    for (; offset < b.length; ++offset) {
+        const lane = b[offset];
         acc = acc + lane * PRIME32_5;
         acc = (acc << 11) | (acc >>> 21);
         acc = (((acc & 0xffff) * PRIME32_1) + (((acc >>> 16) * PRIME32_1) << 16)) & 0xffffffff;
