@@ -1,0 +1,74 @@
+{
+  "name": "js-xxhash",
+  "version": "1.0.0",
+  "description": "Pure JS implementation of xxhash",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**",
+    "src/**",
+    "!**/*.test.*"
+  ],
+  "scripts": {
+    "clean": "rimraf dist/**",
+    "test": "mocha --recursive \"./dist/**/*.test.js\"",
+    "test-watch": "mocha --watch --require ts-node/register --recursive \"src/**/*.test.ts\"",
+    "build": "tsc",
+    "clean-build": "npm run clean ; npm run build",
+    "coverage": "NODE_ENV=test nyc npm run test-ts",
+    "test-ts": "NODE_ENV=test mocha --require ts-node/register --recursive --bail \"src/**/*.test.ts\"",
+    "coverage-coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "travis-coverage": "npm run coverage && npm run coverage-coveralls",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jason3S/xxhash.git"
+  },
+  "keywords": [
+    "xxhash",
+    "javaschript",
+    "typeschript"
+  ],
+  "author": "Jason Dent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jason3S/xxhash/issues"
+  },
+  "homepage": "https://github.com/Jason3S/xxhash#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/lorem-ipsum": "^1.0.2",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "lorem-ipsum": "^1.0.6",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.4",
+    "xxhashjs": "^0.2.2"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.test.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
