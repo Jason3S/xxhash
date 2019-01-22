@@ -40,8 +40,7 @@ af7fd356
 In a browser, you need to use a function or library to create a
 [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)
 
-
-Using Browserfy you can use it like this:
+Using [Browserify](http://browserify.org/) you can use it like this:
 ```typescript
 import {xxHash32} from 'js-xxhash';
 
