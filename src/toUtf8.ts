@@ -34,11 +34,20 @@ export function toUtf8_2(text: string): Uint8Array {
         if (cp < 0x80) {
             bytes.push(cp);
         } else if (cp < 0x800) {
-            bytes.push(0xC0 | ((cp >> 6) & 0x1f), 0x80 | cp & 0x3f);
+            bytes.push(
+                0xC0 | ((cp >> 6) & 0x1f),
+                0x80 | cp & 0x3f);
         } else if (cp < 0x10000) {
-            bytes.push(0xe0 | ((cp >> 12) & 0xf), 0x80 | (cp >> 6) & 0x3f, 0x80 | cp & 0x3f);
+            bytes.push(
+                0xe0 | ((cp >> 12) & 0xf),
+                0x80 | (cp >> 6) & 0x3f,
+                0x80 | cp & 0x3f);
         } else {
-            bytes.push(0xf0 | ((cp >> 18) & 0x7), 0x80 | (cp >> 12) & 0x3f, 0x80 | (cp >> 6) & 0x3f, 0x80 | cp & 0x3f);
+            bytes.push(
+                0xf0 | ((cp >> 18) & 0x7),
+                0x80 | (cp >> 12) & 0x3f,
+                0x80 | (cp >> 6) & 0x3f,
+                0x80 | cp & 0x3f);
         }
     }
     return new Uint8Array(bytes);
@@ -76,4 +85,6 @@ export function toUtf8_3(text: string): Uint8Array {
     return new Uint8Array(bytes);
 }
 
-export default toUtf8_3;
+export const toUtf8 = toUtf8_3;
+
+export default toUtf8;

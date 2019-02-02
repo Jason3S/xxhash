@@ -34,16 +34,17 @@ export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
         The algorithm then proceeds directly to step 4.
     */
 
-    const accN = [
-        (seed + PRIME32_1 + PRIME32_2) & 0xffffffff,
-        (seed + PRIME32_2) & 0xffffffff,
-        (seed + 0) & 0xffffffff,
-        (seed - PRIME32_1) & 0xffffffff,
-    ];
-    let acc = (seed + PRIME32_5) & 0xffffffff;
-    let offset = 0;
+   let acc = (seed + PRIME32_5) & 0xffffffff;
+   let offset = 0;
 
     if (b.length >= 16) {
+        const accN = [
+            (seed + PRIME32_1 + PRIME32_2) & 0xffffffff,
+            (seed + PRIME32_2) & 0xffffffff,
+            (seed + 0) & 0xffffffff,
+            (seed - PRIME32_1) & 0xffffffff,
+        ];
+
         /*
             Step 2. Process stripes
             A stripe is a contiguous segment of 16 bytes. It is evenly divided into 4 lanes, of 4 bytes each.
@@ -175,8 +176,3 @@ export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
     // turn any negatives back into a positive number;
     return acc < 0 ? acc + 4294967296 : acc;
 }
-
-// function toS(acc: number, radix = 16) {
-//     acc = acc < 0 ? acc + 4294967296 : acc;
-//     return ('000' + acc.toString(radix)).replace(/0*((?:[a-f0-9]{4})+)$/, '$1').replace(/([a-f0-9]{4})/g, '$1.');
-// }

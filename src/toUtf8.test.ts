@@ -11,6 +11,9 @@ describe('Validate toUtf8', () => {
             const expected = Buffer.from(s, 'utf8');
             const actual = toUtf8(s);
             expect(actual).to.deep.equal(expected);
+            expect(toUtf8_1(s)).to.deep.equal(expected);
+            expect(toUtf8_2(s)).to.deep.equal(expected);
+            expect(toUtf8_3(s)).to.deep.equal(expected);
         })
     );
 
@@ -23,9 +26,9 @@ describe('Validate toUtf8', () => {
             const expected = Buffer.from(text, 'utf8');
             const actual = toUtf8(text);
             expect(actual).to.deep.equal(expected);
-            expect(toUtf8_1(text)).to.deep.equal(expect);
-            expect(toUtf8_2(text)).to.deep.equal(expect);
-            expect(toUtf8_3(text)).to.deep.equal(expect);
+            expect(toUtf8_1(text)).to.deep.equal(expected);
+            expect(toUtf8_2(text)).to.deep.equal(expected);
+            expect(toUtf8_3(text)).to.deep.equal(expected);
         });
     }
 });
