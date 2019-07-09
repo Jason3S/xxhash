@@ -23,6 +23,11 @@ describe('Validate xxHash32', () => {
             units: units[i % 3],
         });
         it(`Test random string: "${text.slice(0, 30).replace(/^(.{20}).*$/, '$1...')}"`, () => {
+            const actual = xxHash32(text).toString(16);
+            const expected = xxh.h32(text, 0).toString(16);
+            expect(actual).to.be.equal(expected);
+        });
+        it(`Test random string (as buffer): "${text.slice(0, 30).replace(/^(.{20}).*$/, '$1...')}"`, () => {
             const buffer = Buffer.from(text, 'utf8');
             const actual = xxHash32(buffer).toString(16);
             const expected = xxh.h32(buffer, 0).toString(16);
