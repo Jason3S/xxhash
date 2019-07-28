@@ -8,10 +8,11 @@ const PRIME32_5 =  374761393;
 
 /**
  *
- * @param buffer - byte array
+ * @param buffer - byte array or string
  * @param seed - optional seed (32-bit unsigned);
  */
-export function xxHash32(buffer: Uint8Array, seed: number = 0): number {
+export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number {
+    buffer = typeof buffer === "string" ? Buffer.from(buffer, 'utf8') : buffer
     const b = buffer;
 
     /*
