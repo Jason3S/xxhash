@@ -1,3 +1,4 @@
+import toUtf8 from './toUtf8';
 
 const PRIME32_1 = 2654435761;
 const PRIME32_2 = 2246822519;
@@ -12,7 +13,7 @@ const PRIME32_5 =  374761393;
  * @param seed - optional seed (32-bit unsigned);
  */
 export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number {
-    buffer = typeof buffer === "string" ? Buffer.from(buffer, 'utf8') : buffer
+    buffer = typeof buffer === 'string' ? toUtf8(buffer) : buffer;
     const b = buffer;
 
     /*
