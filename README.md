@@ -18,6 +18,24 @@ npm install --save js-xxhash
 
 ## Usage
 
+### Pure JS
+Uses an internal JS conversion of strings to a UTF-8 `Uint8Array`.
+For higher performance consider using dedicated converters in the examples for Node and Browser below.
+
+```typescript
+import {xxHash32} from 'js-xxhash';
+
+let seed = 0;
+let str = 'My text to hash 😊';
+let hashNum = xxHash32(str, seed);
+console.log(hashNum.toString(16));
+```
+
+Expected:
+```
+af7fd356
+```
+
 ### Node JS
 
 ```typescript
@@ -27,11 +45,6 @@ let seed = 0;
 let str = 'My text to hash 😊';
 let hashNum = xxHash32(Buffer.from(str, 'utf8'), seed);
 console.log(hashNum.toString(16));
-```
-
-Expected:
-```
-af7fd356
 ```
 
 
@@ -51,5 +64,3 @@ let hashNum = xxHash32(textEncoder.encode(str), seed);
 console.log(hashNum.toString(16));
 
 ```
-
-
