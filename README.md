@@ -26,7 +26,7 @@ import {xxHash32} from 'js-xxhash';
 let seed = 0;
 let str = 'My text to hash 😊';
 let hashNum = xxHash32(Buffer.from(str, 'utf8'), seed);
-console.log(str.toString(16));
+console.log(hashNum.toString(16));
 ```
 
 Expected:
@@ -48,7 +48,7 @@ let textEncoder = new TextEncoder(); // Note TextEncoder is experimental
 let seed = 0;
 let str = 'My text to hash 😊';
 let hashNum = xxHash32(textEncoder.encode(str), seed);
-console.log(str.toString(16));
+console.log(hashNum.toString(16));
 
 ```
 
