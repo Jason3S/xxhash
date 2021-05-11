@@ -19,6 +19,7 @@
     "test-ts": "NODE_ENV=test mocha --require ts-node/register --recursive \"src/**/*.test.ts\"",
     "coverage-coveralls": "nyc report --reporter=text-lcov | coveralls",
     "travis-coverage": "npm run coverage && npm run coverage-coveralls",
+    "prepare": "npm run build",
     "watch": "tsc -w"
   },
   "repository": {
@@ -37,18 +38,17 @@
   },
   "homepage": "https://github.com/Jason3S/xxhash#readme",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/lorem-ipsum": "^1.0.2",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^10.14.13",
-    "chai": "^4.2.0",
-    "coveralls": "^3.0.5",
-    "lorem-ipsum": "^1.0.6",
-    "mocha": "^6.2.0",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^14.1.1",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3",
+    "@types/chai": "^4.2.18",
+    "@types/lorem-ipsum": "^2.0.0",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^10.17.59",
+    "chai": "^4.3.4",
+    "coveralls": "^3.1.0",
+    "lorem-ipsum": "^2.0.3",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.9",
     "xxhashjs": "^0.2.2"
   },
   "nyc": {

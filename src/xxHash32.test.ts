@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import { xxHash32 } from './xxHash32';
-import * as lorem from 'lorem-ipsum';
+import { loremIpsum as lorem } from 'lorem-ipsum';
 const xxh = require('xxhashjs');
 
 const units: ('words' | 'sentences' | 'paragraphs')[] = ['words', 'sentences', 'paragraphs'];
 
 describe('Validate xxHash32', () => {
-    getSamples().forEach(({s, e}) =>
+    getSamples().forEach(({ s, e }) =>
         it(`Test string: "${s.replace(/^(.{20}).*$/, '$1...')}"`, () => {
             const expected = e;
             const buffer = Buffer.from(s, 'utf8');
@@ -38,13 +38,13 @@ describe('Validate xxHash32', () => {
 
 function getSamples() {
     return [
-        { s: 'a',                   e: '550d7456'},
-        { s: 'ab',                  e: '4999fc53'},
-        { s: 'abc',                 e: '32d153ff'},
-        { s: 'abcd',                e: 'a3643705'},
-        { s: 'abcde',               e: '9738f19b'},
-        { s: 'ab'.repeat(10),       e: '244fbf7c'},
-        { s: 'abc'.repeat(100),     e: '55cad6be'},
-        { s: 'My text to hash 😊',  e: 'af7fd356'},
+        { s: 'a', e: '550d7456' },
+        { s: 'ab', e: '4999fc53' },
+        { s: 'abc', e: '32d153ff' },
+        { s: 'abcd', e: 'a3643705' },
+        { s: 'abcde', e: '9738f19b' },
+        { s: 'ab'.repeat(10), e: '244fbf7c' },
+        { s: 'abc'.repeat(100), e: '55cad6be' },
+        { s: 'My text to hash 😊', e: 'af7fd356' },
     ];
 }
