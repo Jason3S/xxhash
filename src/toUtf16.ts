@@ -1,4 +1,3 @@
-
 export function toUtf16(text: string): Uint8Array {
     const limit = text.length * 2;
     const bytes = new Uint8Array(limit);

@@ -1,18 +1,17 @@
-import toUtf8 from './toUtf8';
+import { toUtf8 } from './toUtf8';
 
 const PRIME32_1 = 2654435761;
 const PRIME32_2 = 2246822519;
 const PRIME32_3 = 3266489917;
-const PRIME32_4 =  668265263;
-const PRIME32_5 =  374761393;
-
+const PRIME32_4 = 668265263;
+const PRIME32_5 = 374761393;
 
 /**
  *
  * @param buffer - byte array or string
  * @param seed - optional seed (32-bit unsigned);
  */
-export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number {
+export function xxHash32(buffer: Uint8Array | string, seed = 0): number {
     buffer = typeof buffer === 'string' ? toUtf8(buffer) : buffer;
     const b = buffer;
 
@@ -36,8 +35,8 @@ export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number 
         The algorithm then proceeds directly to step 4.
     */
 
-   let acc = (seed + PRIME32_5) & 0xffffffff;
-   let offset = 0;
+    let acc = (seed + PRIME32_5) & 0xffffffff;
+    let offset = 0;
 
     if (b.length >= 16) {
         const accN = [
@@ -73,16 +72,16 @@ export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number 
         const b = buffer;
         const limit = b.length - 16;
         let lane = 0;
-        for (offset = 0; (offset & 0xfffffff0) <= limit; offset += 4 ) {
+        for (offset = 0; (offset & 0xfffffff0) <= limit; offset += 4) {
             const i = offset;
             const laneN0 = b[i + 0] + (b[i + 1] << 8);
             const laneN1 = b[i + 2] + (b[i + 3] << 8);
-            const laneNP = laneN0 * PRIME32_2 + (laneN1 * PRIME32_2 << 16);
-            let acc = ((accN[lane] + laneNP) & 0xffffffff);
+            const laneNP = laneN0 * PRIME32_2 + ((laneN1 * PRIME32_2) << 16);
+            let acc = (accN[lane] + laneNP) & 0xffffffff;
             acc = (acc << 13) | (acc >>> 19);
             const acc0 = acc & 0xffff;
             const acc1 = acc >>> 16;
-            accN[lane] = (acc0 * PRIME32_1 + (acc1 * PRIME32_1 << 16)) & 0xffffffff;
+            accN[lane] = (acc0 * PRIME32_1 + ((acc1 * PRIME32_1) << 16)) & 0xffffffff;
             lane = (lane + 1) & 0x3;
         }
 
@@ -95,10 +94,12 @@ export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number 
             acc = (acc1 <<< 1) + (acc2 <<< 7) + (acc3 <<< 12) + (acc4 <<< 18);
             ```
         */
-        acc = (((accN[0] << 1)  | (accN[0] >>> 31))
-             + ((accN[1] << 7)  | (accN[1] >>> 25))
-             + ((accN[2] << 12) | (accN[2] >>> 20))
-             + ((accN[3] << 18) | (accN[3] >>> 14))) & 0xffffffff;
+        acc =
+            (((accN[0] << 1) | (accN[0] >>> 31)) +
+                ((accN[1] << 7) | (accN[1] >>> 25)) +
+                ((accN[2] << 12) | (accN[2] >>> 20)) +
+                ((accN[3] << 18) | (accN[3] >>> 14))) &
+            0xffffffff;
     }
 
     /*
@@ -127,15 +128,15 @@ export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number 
         This process ensures that all input bytes are present in the final mix.
     */
 
-    let limit = buffer.length - 4;
+    const limit = buffer.length - 4;
     for (; offset <= limit; offset += 4) {
         const i = offset;
         const laneN0 = b[i + 0] + (b[i + 1] << 8);
         const laneN1 = b[i + 2] + (b[i + 3] << 8);
-        const laneP = laneN0 * PRIME32_3 + (laneN1 * PRIME32_3 << 16);
-        acc = ((acc + laneP) & 0xffffffff);
+        const laneP = laneN0 * PRIME32_3 + ((laneN1 * PRIME32_3) << 16);
+        acc = (acc + laneP) & 0xffffffff;
         acc = (acc << 17) | (acc >>> 15);
-        acc = (((acc & 0xffff) * PRIME32_4) + (((acc >>> 16) * PRIME32_4) << 16)) & 0xffffffff;
+        acc = ((acc & 0xffff) * PRIME32_4 + (((acc >>> 16) * PRIME32_4) << 16)) & 0xffffffff;
     }
 
     /*
@@ -153,7 +154,7 @@ export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number 
         const lane = b[offset];
         acc = acc + lane * PRIME32_5;
         acc = (acc << 11) | (acc >>> 21);
-        acc = (((acc & 0xffff) * PRIME32_1) + (((acc >>> 16) * PRIME32_1) << 16)) & 0xffffffff;
+        acc = ((acc & 0xffff) * PRIME32_1 + (((acc >>> 16) * PRIME32_1) << 16)) & 0xffffffff;
     }
 
     /*
@@ -170,9 +171,9 @@ export function xxHash32(buffer: Uint8Array | string, seed: number = 0): number 
     */
 
     acc = acc ^ (acc >>> 15);
-    acc = ((acc & 0xffff) * PRIME32_2 & 0xffffffff) + ((acc >>> 16) * PRIME32_2 << 16);
+    acc = (((acc & 0xffff) * PRIME32_2) & 0xffffffff) + (((acc >>> 16) * PRIME32_2) << 16);
     acc = acc ^ (acc >>> 13);
-    acc = ((acc & 0xffff) * PRIME32_3 & 0xffffffff) + ((acc >>> 16) * PRIME32_3 << 16);
+    acc = (((acc & 0xffff) * PRIME32_3) & 0xffffffff) + (((acc >>> 16) * PRIME32_3) << 16);
     acc = acc ^ (acc >>> 16);
 
     // turn any negatives back into a positive number;

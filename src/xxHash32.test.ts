@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { xxHash32 } from './xxHash32';
 import { loremIpsum as lorem } from 'lorem-ipsum';
-const xxh = require('xxhashjs');
+import xxh = require('xxhashjs');
 
 const units: ('words' | 'sentences' | 'paragraphs')[] = ['words', 'sentences', 'paragraphs'];
 

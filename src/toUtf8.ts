@@ -6,17 +6,15 @@ export function toUtf8_1(text: string): Uint8Array {
     const p = [0x00, 0x80, 0x80, 0x80];
     for (const char of text) {
         const b = w;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const cp = char.codePointAt(0)!;
 
-        const n = 0
-                 - ((-(cp & 0xffffff80) >> 31))
-                 - ((-(cp & 0xfffff800) >> 31))
-                 - ((-(cp & 0xffff0000) >> 31));
+        const n = 0 - (-(cp & 0xffffff80) >> 31) - (-(cp & 0xfffff800) >> 31) - (-(cp & 0xffff0000) >> 31);
 
         const z = m[n];
         const y = p[n];
         b[3] = y | (cp & z);
-        b[2] = y | ((cp >>>  6) & z);
+        b[2] = y | ((cp >>> 6) & z);
         b[1] = y | ((cp >>> 12) & z);
         b[0] = y | ((cp >>> 18) & z);
         const s = 3 - n;
@@ -30,24 +28,21 @@ export function toUtf8_1(text: string): Uint8Array {
 export function toUtf8_2(text: string): Uint8Array {
     const bytes: number[] = [];
     for (const char of text) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const cp = char.codePointAt(0)!;
         if (cp < 0x80) {
             bytes.push(cp);
         } else if (cp < 0x800) {
-            bytes.push(
-                0xC0 | ((cp >> 6) & 0x1f),
-                0x80 | cp & 0x3f);
+            bytes.push(0xc0 | ((cp >> 6) & 0x1f), 0x80 | (cp & 0x3f));
         } else if (cp < 0x10000) {
-            bytes.push(
-                0xe0 | ((cp >> 12) & 0xf),
-                0x80 | (cp >> 6) & 0x3f,
-                0x80 | cp & 0x3f);
+            bytes.push(0xe0 | ((cp >> 12) & 0xf), 0x80 | ((cp >> 6) & 0x3f), 0x80 | (cp & 0x3f));
         } else {
             bytes.push(
                 0xf0 | ((cp >> 18) & 0x7),
-                0x80 | (cp >> 12) & 0x3f,
-                0x80 | (cp >> 6) & 0x3f,
-                0x80 | cp & 0x3f);
+                0x80 | ((cp >> 12) & 0x3f),
+                0x80 | ((cp >> 6) & 0x3f),
+                0x80 | (cp & 0x3f)
+            );
         }
     }
     return new Uint8Array(bytes);
@@ -65,21 +60,17 @@ export function toUtf8_3(text: string): Uint8Array {
         if (c < 0x80) {
             bytes.push(c);
         } else if (c < 0x800) {
-            bytes.push(
-                0xC0 | c >> 6,
-                0x80 | c & 0x3f);
+            bytes.push(0xc0 | (c >> 6), 0x80 | (c & 0x3f));
         } else if (c < 0xd800 || c >= 0xe000) {
-            bytes.push(
-                0xe0 | c >> 12,
-                0x80 | (c >> 6) & 0x3f,
-                0x80 | c & 0x3f);
+            bytes.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 0x3f), 0x80 | (c & 0x3f));
         } else {
-            let cp = 0x10000 + ((c & 0x3ff) << 10 | (text.charCodeAt(++i) & 0x3ff));
+            const cp = 0x10000 + (((c & 0x3ff) << 10) | (text.charCodeAt(++i) & 0x3ff));
             bytes.push(
                 0xf0 | ((cp >> 18) & 0x7),
-                0x80 | (cp >> 12) & 0x3f,
-                0x80 | (cp >> 6) & 0x3f,
-                0x80 | cp & 0x3f);
+                0x80 | ((cp >> 12) & 0x3f),
+                0x80 | ((cp >> 6) & 0x3f),
+                0x80 | (cp & 0x3f)
+            );
         }
     }
     return new Uint8Array(bytes);
