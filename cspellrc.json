@@ -1,0 +1,8 @@
+{
+    "files": [
+        "**/*"
+    ],
+    "import": [
+        "./cspell.json"
+    ]
+}
