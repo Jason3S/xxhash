@@ -1,0 +1,18 @@
+{
+    "version": "0.2",
+    "ignorePaths": [
+        "coverage/**",
+        "dist/**",
+        "node_modules/**",
+        "tsconfig.json",
+        "package.json",
+        "package-lock.json"
+    ],
+    "words": [
+        "cspellrc",
+        "Dependabot",
+        "streetsidesoftware",
+        "xxhash",
+        "xxhashjs"
+    ]
+}

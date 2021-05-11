@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import toUtf8 from './toUtf8';
-import {toUtf8_1, toUtf8_2, toUtf8_3} from './toUtf8';
-import * as lorem from 'lorem-ipsum';
+import { toUtf8_1, toUtf8_2, toUtf8_3 } from './toUtf8';
+import { loremIpsum as lorem } from 'lorem-ipsum';
 
 const units: ('words' | 'sentences' | 'paragraphs')[] = ['words', 'sentences', 'paragraphs'];
 
 describe('Validate toUtf8', () => {
-    getSamples().forEach(s =>
+    getSamples().forEach((s) =>
         it(`Test string: "${s.replace(/^(.{20}).*$/, '$1...')}"`, () => {
             const expected = Buffer.from(s, 'utf8');
             const actual = toUtf8(s);
@@ -34,11 +34,5 @@ describe('Validate toUtf8', () => {
 });
 
 function getSamples() {
-    return [
-        'a',
-        'á ä £ ™ ¢',
-        '',
-        'नी ›',
-        'My text to hash 😊',
-    ];
+    return ['a', 'á ä £ ™ ¢', '', 'नी ›', 'My text to hash 😊'];
 }
