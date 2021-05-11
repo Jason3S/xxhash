@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import toUtf8 from './toUtf8';
-import { toUtf8_1, toUtf8_2, toUtf8_3 } from './toUtf8';
+import { toUtf8, toUtf8_1, toUtf8_2, toUtf8_3 } from './toUtf8';
+
 import { loremIpsum as lorem } from 'lorem-ipsum';
 
 const units: ('words' | 'sentences' | 'paragraphs')[] = ['words', 'sentences', 'paragraphs'];
