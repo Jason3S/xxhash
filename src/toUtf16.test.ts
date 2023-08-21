@@ -7,7 +7,7 @@ describe('Validate toUtf16le', () => {
             const expected = Buffer.from(text, 'utf16le');
             expect(toString(toUtf16(text))).to.be.equal(text);
             expect(toUtf16(text)).to.be.deep.equal(expected);
-        })
+        }),
     );
 });
 

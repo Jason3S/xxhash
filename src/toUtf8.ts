@@ -41,7 +41,7 @@ export function toUtf8_2(text: string): Uint8Array {
                 0xf0 | ((cp >> 18) & 0x7),
                 0x80 | ((cp >> 12) & 0x3f),
                 0x80 | ((cp >> 6) & 0x3f),
-                0x80 | (cp & 0x3f)
+                0x80 | (cp & 0x3f),
             );
         }
     }
@@ -69,7 +69,7 @@ export function toUtf8_3(text: string): Uint8Array {
                 0xf0 | ((cp >> 18) & 0x7),
                 0x80 | ((cp >> 12) & 0x3f),
                 0x80 | ((cp >> 6) & 0x3f),
-                0x80 | (cp & 0x3f)
+                0x80 | (cp & 0x3f),
             );
         }
     }
