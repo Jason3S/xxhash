@@ -14,7 +14,7 @@ describe('Validate xxHash32', () => {
             const expectedFromXxh = xxh.h32(buffer, 0).toString(16);
             expect(actual).to.be.equal(expected);
             expect(actual).to.be.equal(expectedFromXxh);
-        })
+        }),
     );
 
     for (let i = 0; i < 20; ++i) {

@@ -14,7 +14,7 @@ describe('Validate toUtf8', () => {
             expect(toUtf8_1(s)).to.deep.equal(expected);
             expect(toUtf8_2(s)).to.deep.equal(expected);
             expect(toUtf8_3(s)).to.deep.equal(expected);
-        })
+        }),
     );
 
     for (let i = 0; i < 0; ++i) {
