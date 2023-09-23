@@ -19,7 +19,7 @@
     "lint": "eslint .",
     "test-ts": "NODE_ENV=test mocha --require ts-node/register --recursive \"src/**/*.test.ts\"",
     "prepare": "npm run build",
-    "update-packages": "npx npm-check-updates -t minor -u && rimraf node_modules package-lock.json && npm i",
+    "update-packages": "npx npm-check-updates -t semver -u && rimraf node_modules package-lock.json && npm i",
     "watch": "tsc -w"
   },
   "repository": {
@@ -38,14 +38,14 @@
   },
   "homepage": "https://github.com/Jason3S/xxhash#readme",
   "devDependencies": {
-    "@types/chai": "^4.3.5",
+    "@types/chai": "^4.3.6",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.17.6",
+    "@types/node": "^18.17.18",
     "@types/xxhashjs": "^0.2.2",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
-    "chai": "^4.3.7",
-    "eslint": "^8.47.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "chai": "^4.3.8",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-node": "^11.1.0",
@@ -54,9 +54,9 @@
     "lorem-ipsum": "^2.0.8",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "xxhashjs": "^0.2.2"
   },
   "nyc": {
