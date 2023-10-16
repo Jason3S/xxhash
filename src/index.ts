@@ -1,1 +1,1 @@
-export * from './xxHash32';
+export * from './xxHash32.js';
