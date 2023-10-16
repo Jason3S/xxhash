@@ -3,7 +3,7 @@
 CHANGELOG.md
 cspell.json
 cspell.schema.json
-**/dist/
+**/dist/**
 [tT]emp/
 integration-tests/config/config.json
 integration-tests/repositories/*/*/**
@@ -11,3 +11,7 @@ lerna.json
 tsconfig*.json
 packages/*/dist/
 **/package-lock.json
+**/node_modules/**
+**/coverage/**
+**/*.map
+package-lock.json
