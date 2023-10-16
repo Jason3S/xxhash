@@ -1,4 +1,4 @@
-import { toUtf8 } from './toUtf8';
+import { toUtf8 } from './toUtf8.js';
 
 const PRIME32_1 = 2654435761;
 const PRIME32_2 = 2246822519;

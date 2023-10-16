@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { toUtf16 } from './toUtf16';
+import { toUtf16 } from './toUtf16.js';
 
 describe('Validate toUtf16le', () => {
     getSamples().forEach((text) =>

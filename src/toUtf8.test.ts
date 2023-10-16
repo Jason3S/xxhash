@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { toUtf8, toUtf8_1, toUtf8_2, toUtf8_3 } from './toUtf8';
+import { toUtf8, toUtf8_1, toUtf8_2, toUtf8_3 } from './toUtf8.js';
 
 import { loremIpsum as lorem } from 'lorem-ipsum';
 

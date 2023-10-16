@@ -1,20 +1,8 @@
 {
-	"compilerOptions": {
-		"target": "es2017",
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"alwaysStrict": true,
-        "declaration": true,
-		"noImplicitAny": true,
-		"noImplicitThis": true,
-		"strictNullChecks": true,
-		"strict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "dist"
-	},
-	"include": [
-		"src"
-	]
+    "extends": "@tsconfig/node18",
+    "compilerOptions": {
+        "verbatimModuleSyntax": true
+    },
+    "files": [],
+    "references": [{ "path": "./tsconfig.cjs.json" }, { "path": "./tsconfig.esm.json" }]
 }

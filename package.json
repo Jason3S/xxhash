@@ -2,25 +2,37 @@
   "name": "js-xxhash",
   "version": "2.0.0",
   "description": "Pure JS implementation of xxhash",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "types": "dist/cjs/index.d.cts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "types": "./dist/cjs/index.d.cts",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
   "files": [
     "dist/**",
+    "!dist/cjs/**/*.js",
+    "!dist/cjs/**/*.d.ts",
     "!**/*.map",
-    "!**/*.test.*"
+    "!**/*.test.*",
+    "!**/*.tsbuildinfo"
   ],
   "scripts": {
     "clean": "rimraf dist/**",
-    "test": "mocha --recursive \"./dist/**/*.test.js\"",
-    "test-watch": "mocha --watch --require ts-node/register --recursive \"src/**/*.test.ts\"",
-    "build": "tsc",
+    "test": "npm run test:cjs && npm run test:esm",
+    "test:cjs": "mocha --recursive \"./dist/cjs/**/*.test.cjs\"",
+    "test:esm": "mocha --recursive \"./dist/esm/**/*.test.js\"",
+    "build": "tsc -b . && ts2mjs dist/cjs --cjs",
     "clean-build": "npm run clean ; npm run build",
-    "coverage": "NODE_ENV=test nyc npm run test-ts",
+    "coverage": "NODE_ENV=test c8 -r lcov -r html npm run test-ts",
     "lint": "eslint .",
-    "test-ts": "NODE_ENV=test mocha --require ts-node/register --recursive \"src/**/*.test.ts\"",
+    "test-ts": "mocha --experimental-specifier-resolution=node --experimental-loader=ts-node/esm --require ts-node/register --recursive \"src/**/*.test.ts\"",
     "prepare": "npm run build",
     "update-packages": "npx npm-check-updates -t semver -u && rimraf node_modules package-lock.json && npm i",
-    "watch": "tsc -w"
+    "watch": "tsc -b . -w"
   },
   "repository": {
     "type": "git",
@@ -38,12 +50,14 @@
   },
   "homepage": "https://github.com/Jason3S/xxhash#readme",
   "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
     "@types/chai": "^4.3.8",
     "@types/mocha": "^10.0.2",
     "@types/node": "^18.18.5",
     "@types/xxhashjs": "^0.2.2",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
+    "c8": "^8.0.1",
     "chai": "^4.3.10",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
@@ -53,31 +67,13 @@
     "eslint-plugin-promise": "^6.1.1",
     "lorem-ipsum": "^2.0.8",
     "mocha": "^10.2.0",
-    "nyc": "^15.1.0",
     "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
+    "ts2mjs": "^2.1.1",
     "typescript": "^5.2.2",
     "xxhashjs": "^0.2.2"
   },
-  "nyc": {
-    "include": [
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "src/**/*.test.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "json",
-      "html"
-    ]
-  },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   }
 }
