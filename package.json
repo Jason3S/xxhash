@@ -29,6 +29,7 @@
     "clean-build": "npm run clean ; npm run build",
     "coverage": "NODE_ENV=test c8 -r lcov -r html npm run test-ts",
     "lint": "eslint .",
+    "prettier": "prettier . -w",
     "test-ts": "mocha --experimental-specifier-resolution=node --experimental-loader=ts-node/esm --require ts-node/register --recursive \"src/**/*.test.ts\"",
     "prepare": "npm run build",
     "update-packages": "npx npm-check-updates -t semver -u && rimraf node_modules package-lock.json && npm i",
