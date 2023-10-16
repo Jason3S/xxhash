@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.0](https://github.com/Jason3S/xxhash/compare/v2.0.0...v3.0.0) (2023-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Export both CommonJS and ESM ([#417](https://github.com/Jason3S/xxhash/issues/417))
+
+### Features
+
+* Export both CommonJS and ESM ([#417](https://github.com/Jason3S/xxhash/issues/417)) ([e31e40c](https://github.com/Jason3S/xxhash/commit/e31e40c337f41d9c8199d4ff383b836f961710c8))
+
+## Changelog
+
 [2.0.0]
 **BREAKING:** dropping support for node 12
 
