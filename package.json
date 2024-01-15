@@ -1,6 +1,6 @@
 {
   "name": "js-xxhash",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Pure JS implementation of xxhash",
   "main": "dist/cjs/index.cjs",
   "types": "dist/cjs/index.d.cts",
