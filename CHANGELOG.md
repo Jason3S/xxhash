@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/Jason3S/xxhash/compare/v3.0.0...v3.0.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* Issue with CommonJS ([#453](https://github.com/Jason3S/xxhash/issues/453)) ([4d6e121](https://github.com/Jason3S/xxhash/commit/4d6e12111f860a2dbff832d13fa3647ddfeba32b))
+
 ## [3.0.0](https://github.com/Jason3S/xxhash/compare/v2.0.0...v3.0.0) (2023-10-16)
 
 
