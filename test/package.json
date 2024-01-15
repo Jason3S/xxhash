@@ -8,5 +8,8 @@
   },
   "dependencies": {
     "js-xxhash": "file:.."
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

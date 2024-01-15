@@ -25,7 +25,7 @@
     "test": "npm run test:cjs && npm run test:esm && npm run test:integration",
     "test:cjs": "mocha --recursive \"./dist/cjs/**/*.test.cjs\"",
     "test:esm": "mocha --recursive \"./dist/esm/**/*.test.js\"",
-    "test:integration": "cd test && npm test",
+    "test:integration": "cd test && npm i && npm test",
     "build": "tsc -b . && ts2mjs dist/cjs --cjs && npm run build:bundle",
     "build:bundle": "esbuild --bundle --platform=node --target=node18 --outfile=dist/cjs/index.cjs src/index.ts",
     "clean-build": "npm run clean ; npm run build",
