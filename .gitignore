@@ -60,3 +60,6 @@ typings/
 
 # next.js build output
 .next
+
+# Do not store the test package-lock.json because it is generated every time.
+test/package-lock.json
