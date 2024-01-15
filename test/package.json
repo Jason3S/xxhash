@@ -1,0 +1,15 @@
+{
+  "name": "test-xxhash",
+  "module": "commonjs",
+  "scripts": {
+    "test": "npm run test:commonjs && npm run test:esm",
+    "test:commonjs": "node test.cjs",
+    "test:esm": "node test.mjs"
+  },
+  "dependencies": {
+    "js-xxhash": "file:.."
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
