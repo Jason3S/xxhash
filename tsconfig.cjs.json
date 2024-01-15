@@ -8,7 +8,7 @@
         "module": "CommonJS",
         "moduleResolution": "Node",
         "esModuleInterop": true,
-        "importHelpers": true,
+        "importHelpers": false,
         "sourceMap": true,
         "declaration": true,
         "declarationMap": true,
