@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  test-old-node-versions:
+  test-node-versions:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -16,6 +16,7 @@ jobs:
           # List of supported node versions (latest is tested in `test-os`)
           - 18.x
           - 20.x
+          - 21.x
 
         os:
           - ubuntu-latest
