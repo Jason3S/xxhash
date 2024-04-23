@@ -1,0 +1,18 @@
+{
+    "extends": "@tsconfig/node18",
+    "compilerOptions": {
+        "composite": true,
+        "outDir": "./dist/esm",
+        "lib": ["es2023", "dom"],
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "importHelpers": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "rootDir": "./perf",
+        "strict": true
+    },
+    "include": ["perf"]
+}

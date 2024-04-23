@@ -1,18 +1,18 @@
-import { toUtf8 } from './toUtf8.js';
-
 const PRIME32_1 = 2654435761;
 const PRIME32_2 = 2246822519;
 const PRIME32_3 = 3266489917;
 const PRIME32_4 = 668265263;
 const PRIME32_5 = 374761393;
 
+let encoder: TextEncoder | undefined;
+
 /**
  *
- * @param buffer - byte array or string
+ * @param input - byte array or string
  * @param seed - optional seed (32-bit unsigned);
  */
-export function xxHash32(buffer: Uint8Array | string, seed = 0): number {
-    buffer = typeof buffer === 'string' ? toUtf8(buffer) : buffer;
+export function xxHash32(input: Uint8Array | string, seed = 0): number {
+    const buffer = typeof input === 'string' ? (encoder ??= new TextEncoder()).encode(input) : input;
     const b = buffer;
 
     /*
