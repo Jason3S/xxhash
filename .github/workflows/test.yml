@@ -64,3 +64,29 @@ jobs:
 
       # Ensure the repository is clean after build & test
       - run: git --no-pager diff --compact-summary --exit-code
+
+  test-performance:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version:
+          # Test the latest node version here, move older versions to `test-old-node-versions`
+          - 20.x
+
+        os:
+          - ubuntu-latest
+          # - windows-latest
+          # - macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm ci
+
+      - run: npm run insight
