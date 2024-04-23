@@ -1,6 +1,6 @@
 {
   "name": "test-xxhash",
-  "module": "commonjs",
+  "type": "module",
   "scripts": {
     "test": "npm run test:commonjs && npm run test:esm",
     "test:commonjs": "node test.cjs",
