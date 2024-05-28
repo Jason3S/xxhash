@@ -36,7 +36,7 @@
     "prettier": "prettier . -w",
     "test-ts": "mocha --experimental-specifier-resolution=node --experimental-loader=ts-node/esm --require ts-node/register --recursive \"src/**/*.test.ts\"",
     "prepare": "npm run build",
-    "insight": "perf-insight --register ts-node/esm --file \"**/*.perf.{mts,ts}\"",
+    "perf": "perf-insight --register ts-node/esm --file \"**/*.perf.{mts,ts}\"",
     "insight:test": "perf-insight --register ts-node/esm --file \"test/**/*.perf.{mts,ts}\"",
     "insight:utf8": "perf-insight --register ts-node/esm --file \"**/toUtf8.perf.{mts,ts}\"",
     "ncu": "npx npm-check-updates",

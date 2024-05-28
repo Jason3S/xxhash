@@ -89,4 +89,4 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run insight
+      - run: npm run perf
