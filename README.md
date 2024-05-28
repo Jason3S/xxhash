@@ -1,4 +1,4 @@
-# xxHash
+# js-xxHash
 
 Pure Javascript / Typescript Implementation of [xxHash](http://cyan4973.github.io/xxHash/)
 
