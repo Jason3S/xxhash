@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/Jason3S/xxhash/compare/v3.0.1...v4.0.0) (2024-05-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Use TextEncoder to convert strings ([#497](https://github.com/Jason3S/xxhash/issues/497))
+
+### Features
+
+* Use TextEncoder to convert strings ([#497](https://github.com/Jason3S/xxhash/issues/497)) ([e20b828](https://github.com/Jason3S/xxhash/commit/e20b828322c712cc4e857b2436a2dad9b43e8f49))
+
 ## [3.0.1](https://github.com/Jason3S/xxhash/compare/v3.0.0...v3.0.1) (2024-01-15)
 
 
