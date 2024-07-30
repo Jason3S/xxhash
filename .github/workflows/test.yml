@@ -16,7 +16,7 @@ jobs:
           # List of supported node versions (latest is tested in `test-os`)
           - 18.x
           - 20.x
-          - 21.x
+          - 22.x
 
         os:
           - ubuntu-latest
@@ -71,13 +71,10 @@ jobs:
     strategy:
       matrix:
         node-version:
-          # Test the latest node version here, move older versions to `test-old-node-versions`
           - 20.x
 
         os:
           - ubuntu-latest
-          # - windows-latest
-          # - macos-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -88,5 +85,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: npm ci
+
+      # test:integrations will setup the test environment, which contains some perf tests.
+      - run: npm run test:integrations
 
       - run: npm run perf
