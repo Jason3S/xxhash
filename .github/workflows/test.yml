@@ -71,13 +71,10 @@ jobs:
     strategy:
       matrix:
         node-version:
-          # Test the latest node version here, move older versions to `test-old-node-versions`
           - 20.x
 
         os:
           - ubuntu-latest
-          # - windows-latest
-          # - macos-latest
 
     steps:
       - uses: actions/checkout@v4
