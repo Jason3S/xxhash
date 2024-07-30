@@ -87,6 +87,6 @@ jobs:
       - run: npm ci
 
       # test:integrations will setup the test environment, which contains some perf tests.
-      - run: test:integrations
+      - run: npm run test:integrations
 
       - run: npm run perf
