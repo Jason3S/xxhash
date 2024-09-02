@@ -62,7 +62,7 @@
     "@tsconfig/node18": "^18.2.4",
     "@types/chai": "^4.3.16",
     "@types/mocha": "^10.0.7",
-    "@types/node": "^18.19.42",
+    "@types/node": "^22.5.2",
     "@types/xxhashjs": "^0.2.4",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
