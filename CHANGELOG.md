@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.1](https://github.com/Jason3S/xxhash/compare/v5.0.0...v5.0.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* Fix Publish ([50818ae](https://github.com/Jason3S/xxhash/commit/50818aeed7c0630ad9ca69bb241e6ffc64283407))
+
 ## [5.0.0](https://github.com/Jason3S/xxhash/compare/v4.0.0...v5.0.0) (2025-11-19)
 
 
