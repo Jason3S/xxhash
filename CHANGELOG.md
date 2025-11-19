@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/Jason3S/xxhash/compare/v4.0.0...v5.0.0) (2025-11-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Require Node >= 20.x ([#652](https://github.com/Jason3S/xxhash/issues/652))
+
+### Features
+
+* Require Node &gt;= 20.x ([#652](https://github.com/Jason3S/xxhash/issues/652)) ([82352e0](https://github.com/Jason3S/xxhash/commit/82352e01be0a7fc73c3ee3317c83379834012eaf))
+
 ## [4.0.0](https://github.com/Jason3S/xxhash/compare/v3.0.1...v4.0.0) (2024-05-28)
 
 
