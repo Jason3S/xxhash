@@ -13,8 +13,6 @@ jobs:
     strategy:
       matrix:
         node-version:
-          # List of supported node versions (latest is tested in `test-os`)
-          - 18.x
           - 20.x
           - 22.x
           - 24.x
