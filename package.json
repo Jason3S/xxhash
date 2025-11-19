@@ -1,5 +1,9 @@
 {
   "name": "js-xxhash",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "version": "4.0.0",
   "description": "Pure JS implementation of xxhash",
   "main": "dist/cjs/index.cjs",
