@@ -6,7 +6,7 @@ export function toUtf8_1(text: string): Uint8Array {
     const p = [0x00, 0x80, 0x80, 0x80];
     for (const char of text) {
         const b = w;
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
         const cp = char.codePointAt(0)!;
 
         const n = 0 - (-(cp & 0xffffff80) >> 31) - (-(cp & 0xfffff800) >> 31) - (-(cp & 0xffff0000) >> 31);
@@ -28,7 +28,6 @@ export function toUtf8_1(text: string): Uint8Array {
 export function toUtf8_2(text: string): Uint8Array {
     const bytes: number[] = [];
     for (const char of text) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const cp = char.codePointAt(0)!;
         if (cp < 0x80) {
             bytes.push(cp);
